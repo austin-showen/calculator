@@ -7,6 +7,8 @@
 */
 
 body {
+    font-family: 'Courier New', Courier, monospace;
+    color: #2a2a2a;
     display: flex;
     min-height: 100vh;
     justify-content: center;
@@ -18,20 +20,21 @@ body {
     flex-direction: column;
     padding: 20px;
     background-color: #CDCACC;
-    border: 1px solid black;
+    border: 2px solid #2a2a2a;
     border-radius: 15px;
+    box-shadow: 5px 5px 15px #999798;
 }
 
 .output {
     text-align: right;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
     padding: 10px;
     margin: 10px 0px;
     width: 330px;
     background-color: #CDD6DD;
-    border: 1px solid black;
+    border: 1px solid #2a2a2a;
     border-radius: 10px;
+    box-shadow: inset 3px 3px 8px #999798;
 }
 
 .container-buttons {
@@ -48,6 +51,7 @@ body {
     height: 80px;
     width: 80px;
     background-color: #CDD6DD;
+    box-shadow: 2px 2px 6px #999798;
 }
 
 .operator {
@@ -56,6 +60,7 @@ body {
     height: 80px;
     width: 80px;
     background-color: #CDACA1;
+    box-shadow: 2px 2px 6px #999798;
 }
 
 .equals {
@@ -64,6 +69,7 @@ body {
     height: 80px;
     width: 80px;
     background-color: #CD8987;
+    box-shadow: 2px 2px 6px #999798;
 }
 
 .clear {
@@ -72,4 +78,5 @@ body {
     height: 80px;
     width: 80px;
     background-color: #CD8987;
+    box-shadow: 2px 2px 6px #999798;
 }
