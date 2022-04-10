@@ -1,5 +1,6 @@
 let currentValStr = "";
 let prevValStr = "";
+let currentOperator = "";
 
 function operate(operand, a, b) {
     switch (operand) {
@@ -10,7 +11,8 @@ function operate(operand, a, b) {
         case "*":
             return a * b;
         case "/":
-            return a / b;
+            if (b === 0) return "ERROR";
+            else return a / b;
     }
 }
 
@@ -21,18 +23,57 @@ function numberClick() {
 }
 
 function operatorClick() {
-    console.log(this.textContent);
-    return;
+    if (currentValStr) {
+        if (prevValStr) {
+            let result = "0";
+            if (currentOperator) {
+                result = String(operate(currentOperator, Number(prevValStr), Number(currentValStr)));
+            }
+            result = trim(result);
+            prevValStr = result;
+            currentValStr = "";
+            output.textContent = result;
+            currentOperator = this.textContent;
+        } else {
+            prevValStr = currentValStr;
+            currentValStr = "";
+            currentOperator = this.textContent;
+        }
+    } else if (prevValStr) {
+        currentOperator = this.textContent;
+    } else return;
 }
 
 function equalsClick() {
-    console.log(this.textContent);
-    return;
+    if (prevValStr && currentValStr && currentOperator) {
+        let result = operate(currentOperator, Number(prevValStr), Number(currentValStr));
+        result = trim(result);
+        output.textContent = result;
+        currentValStr = "";
+        prevValStr = result;
+        currentOperator = "";
+    }
 }
 
 function clearClick() {
-    console.log(this.textContent);
-    return;
+    currentValStr = "";
+    prevValStr = "";
+    currentOperator = "";
+    prevOperator = "";
+    output.textContent = 0;
+}
+
+function trim(result) {
+    const resultNum = Number(result);
+    if (resultNum.length <= 13) {
+        return result;
+    } else {
+        const resultNumRounded = String(Math.round(resultNum * 100000)/100000);
+        if (resultNumRounded.length <= 13){
+            return resultNumRounded;
+        }
+        else return "ERROR";
+    }
 }
 
 const numbers = document.querySelectorAll(".number");
