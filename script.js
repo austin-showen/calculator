@@ -65,14 +65,18 @@ function clearClick() {
 
 function trim(result) {
     const resultNum = Number(result);
-    if (resultNum.length <= 13) {
+    if (!resultNum) {
+        return "ERROR";
+    } else if (result.length <= 13) {
         return result;
     } else {
         const resultNumRounded = String(Math.round(resultNum * 100000)/100000);
         if (resultNumRounded.length <= 13){
             return resultNumRounded;
         }
-        else return "ERROR";
+        else {
+            return "ERROR";
+        }
     }
 }
 
